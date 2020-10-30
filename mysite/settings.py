@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = 'j2w!qfvcy_+71e(qpr%(7o&9!1%^3j8^*_7i+ea-w+)4)3v@#e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['www.factorstrategy.com', 'localhost']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.factorstrategy.com']
+#ALLOWED_HOSTS = ['*']
 
 # Application definition
 
