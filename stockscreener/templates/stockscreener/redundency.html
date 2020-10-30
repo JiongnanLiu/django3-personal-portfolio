@@ -1,0 +1,528 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-12">
+        <div class="card chart-card">
+            <!-- Card content -->
+            <div id="datatable_area" class="card-body pb-0">
+                <div id="stock_datas_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length bs-select" id="stock_datas_length"><label>Show <select
+                                        name="stock_datas_length" aria-controls="stock_datas"
+                                        class="custom-select custom-select-sm form-control form-control-sm">
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="-1">全部</option>
+                                    </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dataTables_scroll">
+                                <div class="dataTables_scrollHead"
+                                    style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                                    <div class="dataTables_scrollHeadInner"
+                                        style="box-sizing: content-box; width: 1062px; padding-right: 15px;">
+                                        <table
+                                            class="table table-striped table-hover table-sm table-borderless dataTable no-footer"
+                                            cellspacing="0" width="100%" role="grid"
+                                            style="margin-left: 0px; width: 1062px;">
+                                            <thead>
+                                                <tr class="blue text-white" role="row">
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="代码: activate to sort column ascending">代码</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="名称: activate to sort column ascending">名称</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="行业: activate to sort column ascending">行业</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="股价: activate to sort column ascending">股价</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="涨跌: activate to sort column ascending">涨跌</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="Rel1d: activate to sort column ascending">Rel1d</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="Rel5d: activate to sort column ascending">Rel5d</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 102px;"
+                                                        aria-label="Rel20d: activate to sort column ascending">Rel20d
+                                                    </th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="C/S: activate to sort column ascending">C/S</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="S/M: activate to sort column ascending">S/M</th>
+                                                    <th class="th-sm sorting" tabindex="0" aria-controls="stock_datas"
+                                                        rowspan="1" colspan="1" style="width: 96px;"
+                                                        aria-label="M/L: activate to sort column ascending">M/L</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="dataTables_scrollBody"
+                                    style="position: relative; overflow: auto; max-height: 540px; width: 100%;">
+                                    <table id="stock_datas"
+                                        class="table table-striped table-hover table-sm table-borderless dataTable no-footer"
+                                        cellspacing="0" width="100%" role="grid" aria-describedby="stock_datas_info"
+                                        style="width: 100%;">
+                                        <thead>
+                                            <tr class="blue text-white" role="row" style="height: 0px;">
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">代码</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">名称</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">行业</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">股价</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">涨跌</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">Rel1d</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">Rel5d</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 102px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">Rel20d</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">C/S</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">S/M</div>
+                                                </th>
+                                                <th class="th-sm sorting" aria-controls="stock_datas" rowspan="1"
+                                                    colspan="1"
+                                                    style="width: 96px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;">
+                                                    <div class="dataTables_sizing"
+                                                        style="height: 0px; overflow: hidden;">M/L</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="stock_tbody">
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/601865/" target="_blank">601865</a>
+                                                </td>
+                                                <td><a href="/s/601865/" target="_blank">福莱特</a></td>
+                                                <td>建筑材料</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">40.04</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.00%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.39%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">20.44%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">57.77%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">19.28%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">19.96%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.79%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/002594/" target="_blank">002594</a>
+                                                </td>
+                                                <td><a href="/s/002594/" target="_blank">比亚迪</a></td>
+                                                <td>汽车</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">158.38</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">4.47%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.86%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.46%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">42.03%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">20.16%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">20.54%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">17.18%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/601633/" target="_blank">601633</a>
+                                                </td>
+                                                <td><a href="/s/601633/" target="_blank">长城汽车</a></td>
+                                                <td>汽车</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">24.38</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.02%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.63%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.26%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">36.08%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.77%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">22.43%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">21.42%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/000039/" target="_blank">000039</a>
+                                                </td>
+                                                <td><a href="/s/000039/" target="_blank">中集集团</a></td>
+                                                <td>机械设备</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">11.9</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.02%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.41%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.11%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">32.43%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.4%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.1%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.38%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/002444/" target="_blank">002444</a>
+                                                </td>
+                                                <td><a href="/s/002444/" target="_blank">巨星科技</a></td>
+                                                <td>机械设备</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">26.83</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.83%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.22%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.56%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">31.59%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.27%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.89%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.87%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/002304/" target="_blank">002304</a>
+                                                </td>
+                                                <td><a href="/s/002304/" target="_blank">洋河股份</a></td>
+                                                <td>食品饮料</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">168.32</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.14%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.75%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.61%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">28.84%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.23%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.72%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.63%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/601238/" target="_blank">601238</a>
+                                                </td>
+                                                <td><a href="/s/601238/" target="_blank">广汽集团</a></td>
+                                                <td>汽车</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.05</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.66%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.05%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">14.09%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">27.40%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">17.83%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.55%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.55%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/300347/" target="_blank">300347</a>
+                                                </td>
+                                                <td><a href="/s/300347/" target="_blank">泰格医药</a></td>
+                                                <td>医药生物</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">128.03</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.13%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.52%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.26%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">27.39%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">11.49%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.76%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.6%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/300015/" target="_blank">300015</a>
+                                                </td>
+                                                <td><a href="/s/300015/" target="_blank">爱尔眼科</a></td>
+                                                <td>医药生物</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">62.4</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.78%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.39%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.98%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">27.15%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.1%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.99%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.08%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/600563/" target="_blank">600563</a>
+                                                </td>
+                                                <td><a href="/s/600563/" target="_blank">法拉电子</a></td>
+                                                <td>电子</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">88.72</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.50%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.11%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.85%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">27.06%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.72%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.07%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.15%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/000568/" target="_blank">000568</a>
+                                                </td>
+                                                <td><a href="/s/000568/" target="_blank">泸州老窖</a></td>
+                                                <td>食品饮料</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">178.97</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.00%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.39%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.79%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">26.74%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">15.76%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.48%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.86%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/002709/" target="_blank">002709</a>
+                                                </td>
+                                                <td><a href="/s/002709/" target="_blank">天赐材料</a></td>
+                                                <td>化工</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">62.06</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.38%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.99%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.92%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">25.09%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.68%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.12%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.37%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/002027/" target="_blank">002027</a>
+                                                </td>
+                                                <td><a href="/s/002027/" target="_blank">分众传媒</a></td>
+                                                <td>传媒</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">9.83</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-1.70%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-2.31%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.62%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">23.00%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.96%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">14.84%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.57%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/603605/" target="_blank">603605</a>
+                                                </td>
+                                                <td><a href="/s/603605/" target="_blank">珀莱雅</a></td>
+                                                <td>化工</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">175.28</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.82%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.21%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.13%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">22.20%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.8%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.72%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.14%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/300072/" target="_blank">300072</a>
+                                                </td>
+                                                <td><a href="/s/300072/" target="_blank">三聚环保</a></td>
+                                                <td>化工</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.78</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.32%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">2.71%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.96%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">22.06%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.77%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.86%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">8.32%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/002415/" target="_blank">002415</a>
+                                                </td>
+                                                <td><a href="/s/002415/" target="_blank">海康威视</a></td>
+                                                <td>电子</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">44.89</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.54%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.93%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">15.00%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">21.22%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">11.53%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.88%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.24%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/002372/" target="_blank">002372</a>
+                                                </td>
+                                                <td><a href="/s/002372/" target="_blank">伟星新材</a></td>
+                                                <td>建筑材料</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.16</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.99%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.38%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.97%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">21.11%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.08%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.49%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.3%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/002008/" target="_blank">002008</a>
+                                                </td>
+                                                <td><a href="/s/002008/" target="_blank">大族激光</a></td>
+                                                <td>电子</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">41.16</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.96%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.35%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">15.96%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">20.82%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.1%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.86%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.57%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/002241/" target="_blank">002241</a>
+                                                </td>
+                                                <td><a href="/s/002241/" target="_blank">歌尔股份</a></td>
+                                                <td>电子</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">48.39</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.55%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">0.94%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">14.01%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">19.58%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.1%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.77%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.31%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/603486/" target="_blank">603486</a>
+                                                </td>
+                                                <td><a href="/s/603486/" target="_blank">科沃斯</a></td>
+                                                <td>机械设备</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">59.74</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.10%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.71%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.78%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">19.50%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.31%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.55%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.69%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/600166/" target="_blank">600166</a>
+                                                </td>
+                                                <td><a href="/s/600166/" target="_blank">福田汽车</a></td>
+                                                <td>汽车</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.07</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">2.68%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">2.07%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.63%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">19.44%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.75%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.42%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.4%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/600068/" target="_blank">600068</a>
+                                                </td>
+                                                <td><a href="/s/600068/" target="_blank">葛洲坝</a></td>
+                                                <td>建筑装饰</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">7.37</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.00%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.39%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">24.38%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.99%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">17.86%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.43%</td>
+                                                <td class="text-center" style="color: rgb(208,84,81)">-0.13%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/002044/" target="_blank">002044</a>
+                                                </td>
+                                                <td><a href="/s/002044/" target="_blank">美年健康</a></td>
+                                                <td>医药生物</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">17.43</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">2.47%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.86%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">16.59%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.94%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">12.65%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">1.34%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.14%</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td class="text-center"><a href="/s/600006/" target="_blank">600006</a>
+                                                </td>
+                                                <td><a href="/s/600006/" target="_blank">东风汽车</a></td>
+                                                <td>汽车</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.77</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">4.15%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.54%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.42%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.53%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">10.2%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.86%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.24%</td>
+                                            </tr>
+                                            <tr role="row" class="odd">
+                                                <td class="text-center"><a href="/s/300124/" target="_blank">300124</a>
+                                                </td>
+                                                <td><a href="/s/300124/" target="_blank">汇川技术</a></td>
+                                                <td>电气设备</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">65.54</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">4.36%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">3.75%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">5.61%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">18.37%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">6.94%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">9.37%</td>
+                                                <td class="text-center" style="color: rgb(98,164,153)">13.06%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="stock_datas_info" role="status" aria-live="polite">1 - 25
+                                of 50</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple" id="stock_datas_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="stock_datas_previous"><a
+                                            href="#" aria-controls="stock_datas" data-dt-idx="0" tabindex="0"
+                                            class="page-link"><i class="fas fa-chevron-left"></i></a></li>
+                                    <li class="paginate_button page-item next" id="stock_datas_next"><a href="#"
+                                            aria-controls="stock_datas" data-dt-idx="1" tabindex="0"
+                                            class="page-link"><i class="fas fa-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

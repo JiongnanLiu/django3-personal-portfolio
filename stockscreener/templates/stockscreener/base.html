@@ -1,0 +1,150 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Factor Strategy</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static "stockscreener/css/font-awesome.min.css" %}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static "stockscreener/css/bootstrap.min.css" %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static "stockscreener/css/mdb.css" %}">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="{% static "stockscreener/css/datatables2.min.css" %}">
+    <link rel="stylesheet" href="{% static "stockscreener/css/style.css" %}">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-180694593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-180694593-1');
+    </script>
+    <style type="text/css">
+        #body {
+            margin-top: 8rem !important;
+        }
+
+        /* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f5f5f5">
+
+    <!--Main Navigation-->
+    <nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-primary blue scrolling-navbar">
+        <a class="navbar-brand" href="/"><strong>Factor Strategy</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link waves-effect waves-light" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/breadth/">Market
+                        Breadth</a></li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/turnover/">Money
+                        Flow</a>
+                </li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/screener/">Stock
+                        Screener</a></li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/rank/">Ranking</a></li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/viewpoint/">Opinions</a>
+                </li>
+                <li class="nav-item"><a class="nav-link waves-effect waves-light" href="/about">About</a></li>
+            </ul>
+
+
+            <ul class="navbar-nav nav-flex-icons">
+
+
+                {% comment %} <li class="nav-item"><a href="/signup/" class="nav-link waves-effect waves-light"><i
+                            class="fas fa-registered"></i> Signup</a>
+                </li>
+                <li class="nav-item"><a href="/signin/" class="nav-link waves-effect waves-light"><i
+                            class="fas fa-sign-in-alt"></i> Login</a></li> {% endcomment %}
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <span class="nav-link">Logged in as {{ user.username }}</span>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+                    <form style='display: none;' method="POST" action="{% url 'userLogout' %}">
+                        {% csrf_token %}
+                        <button id="signOutBtn" type="submit">Logout</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userSignup' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userLogin' %}">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <section id="body" class="container">
+        <div class="mt-4 container">
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static "stockscreener/js/jquery.min.js" %}"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static "stockscreener/js/popper.min.js" %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static "stockscreener/js/bootstrap.min.js" %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static "stockscreener/js/mdb.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "stockscreener/js/main.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "stockscreener/js/echarts.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "stockscreener/js/echarts-gl.min.js" %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            const breadthEchart = echarts.init(document.getElementById('breadth_echart'))
+            loadChart(breadthEchart, '/breadth/chart_options/')
+
+            const balanceEchart = echarts.init(document.getElementById('balance_echart'))
+            loadChart(balanceEchart, '/turnover/balance/')
+
+        })
+    </script>
+</body>
+
+</html>

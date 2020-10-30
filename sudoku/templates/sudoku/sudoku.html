@@ -1,0 +1,255 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="icon" href="">
+    <title>Sudoku</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'portfolio/game.css' %}">
+    <!-- Add icon library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">// <![CDATA[
+        var sec = 0;
+        const total_time = 0;
+        function loading() {
+            $("#loading").show();
+            $("#content").hide();
+        }
+
+        function pad(val) { return val > 9 ? val : "0" + val; }
+        function start() {
+            setInterval(function () {
+                let secs = $("#seconds").html(pad(++sec % 60));
+                let mins = $("#minutes").html(pad(parseInt(sec / 60, 10)));
+                total_time = secs + mins * 60;
+
+            }, 1000);
+        }
+    </script>
+
+</head>
+
+<body>
+
+
+
+    <center>
+
+    </center>
+
+    <div class='container-fluid mt-4'>
+
+        <html>
+
+        <head>
+            <style>
+                table {
+                    width: 100%;
+                    margin: 1em auto;
+
+                }
+
+                td,
+                th {
+                    height: 60px;
+                    weight: 60px;
+                    border: 1px solid #dddddd;
+                    text-align: center;
+                    padding: 8px;
+                }
+
+                td:first-child {
+                    border-left: solid;
+                }
+
+                td:nth-child(3n) {
+                    border-right: solid;
+                }
+
+                tr:first-child td {
+                    border-top: solid;
+                }
+
+                tr:nth-child(3n) td {
+                    border-bottom: solid;
+                }
+
+                div#loading {
+                    width: 200px;
+                    height: 50px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    margin: -25px 0 0 -50px;
+                    display: none;
+                    background: url(/static/img/loadingimage.gif) no-repeat;
+                    cursor: wait;
+                }
+
+                span#data,
+                input {
+                    display: block !important;
+                    padding: 0px !important;
+                    margin: 0 !important;
+                    border: 0 !important;
+                    width: 100% !important;
+                    border-radius: 0 !important;
+                    line-height: 1 !important;
+                    height: 100% !important;
+                    font-size: 35px;
+                    justify-content: center;
+                    text-align: center !important;
+                }
+
+                td {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+            </style>
+        </head>
+
+        <section class="row">
+            <div id="game-wrapper" class="col-6">
+                <div id="loading">
+                    <form action="{% url 'sudoku:sudoku' %}">
+                        {{ form.as_table }}
+                        {% csrf_token %}
+
+                        <table align="center">
+                            {% if new == True or error == True %}
+                            {% for cell in cells %}
+                            <tr>
+
+                                {% for colume in cell %}
+                                <td><input type="number"
+                                        name="cell-{{ forloop.parentloop.counter }}-{{ forloop.counter }}" min="1"
+                                        max="9">
+                                </td>
+                                {% endfor %}
+
+                            </tr>
+                            {% endfor %}
+
+                            {% elif new == False and error == False %}
+                            {% for cell in cells %}
+                            <tr>
+
+                                {% for data in cell %}
+                                <td>{{ data }}</td>
+                                {% endfor %}
+
+                            </tr>
+
+                            {% endfor %}
+                            {% endif %}
+
+
+                        </table>
+
+
+                        {% if new == True or error == True %}
+                        <div style="text-align: center"><button type="submit" value="Submit"
+                                style="text-align: center; width: 25%;" onclick="loading();"
+                                formmethod="POST">Submit</button>
+                        </div>
+                        {% elif new == False and error == False %}
+                        <div style="text-align: center"><button type="submit" value="Submit"
+                                style="text-align: center; width: 25%;" formmethod="GET">New</button>
+                        </div>
+                        {% endif %}
+
+
+
+                    </form>
+                </div>
+                <div id="content">
+
+                    <form action="{% url 'sudoku:sudoku' %}">
+                        {{ form.as_table }}
+                        {% csrf_token %}
+
+                        <table align="center">
+                            {% if new == True or error == True %}
+                            {% for cell in cells %}
+                            <tr>
+
+                                {% for colume in cell %}
+                                <td><input type="number"
+                                        name="cell-{{ forloop.parentloop.counter }}-{{ forloop.counter }}" min="1"
+                                        max="9"></td>
+                                {% endfor %}
+
+                            </tr>
+                            {% endfor %}
+
+                            {% elif new == False and error == False %}
+                            {% for cell in cells %}
+                            <tr>
+
+                                {% for data in cell %}
+                                <td><span id="data">{{ data }}</span></td>
+                                {% endfor %}
+
+                            </tr>
+
+                            {% endfor %}
+                            {% endif %}
+
+
+                        </table>
+
+                        {% if new == True or error == True %}
+                        <div style="text-align: center"><button type="submit" value="Submit"
+                                style="text-align: center; width: 25%;" onclick="loading();"
+                                formmethod="POST">Submit</button>
+                        </div>
+                        {% elif new == False and error == False %}
+                        <div style="text-align: center"><button type="submit" value="Submit"
+                                style="text-align: center; width: 25%;" formmethod="GET">New</button>
+                        </div>
+                        {% endif %}
+
+                    </form>
+                </div>
+            </div>
+            <div id="ranking-wrapper" class="col-6">
+                <div id="tiemr" class="container">
+                    <span><span id="minutes">00</span>:<span id="seconds">00</span></span>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary"
+                        onclick="let e = this; start(); e.disabled = true; return true;">Start</button>
+                </div>
+                <div id="ranking-panel" class="container">
+                    {% if valid == True %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+
+        </html>
+        <br>
+
+    </div>
+
+    <footer class="container-fluid text-center">
+
+    </footer>
+
+</body>
+
+</html>
+
+{% endblock %}

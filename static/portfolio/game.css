@@ -1,0 +1,87 @@
+   
+
+
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 300px;
+        height: 300px;
+        margin-left: 20%;
+        margin-top: 20%;
+        text-align: center;
+    }
+
+    button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        background-color: #2C75FF;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #2C75FF;
+    }
+
+    a:hover {background-color: transparent;}
+    .sidenav {
+			margin-left: -12.5%;
+			width: 12.5%;
+      background: rgba(44, 117, 255, 0.5);
+      height: 100%;
+			box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+			position: fixed;
+      border-radius: 10px;
+    }
+
+    p{
+      margin-left: 10px;
+      margin-right: 10px;
+      text-align: justify;
+      padding: 1px;
+    }
+
+    div#loading {
+      width: 200px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -25px 0 0 -50px;
+      display: none;
+      background: url(/static/img/loadingimage.gif) no-repeat;
+      cursor: wait;
+    }
+
+		.sidenav ul li a{
+			color: white;
+      text-decoration: none;
+		}
+
+    .sidenav ul li a:hover{
+      background-color: transparent;
+      color: white;
+    }
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+    height: auto;
+    padding: 15px;
+    }
+    .row.content {height: auto;}
+
+    footer {padding: 20px;}
+
+    code { background: hsl(220, 80%, 90%);}
+
+    pre {
+        white-space: pre-wrap;
+        background: hsl(30,80%,90%);
+    }
+}

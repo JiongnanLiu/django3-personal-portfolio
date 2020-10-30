@@ -1,0 +1,12 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>{{ photo.title }}</h1>
+<h2>--{{ photo.date|date:'F jS Y' }}--</h2>
+<img src="{{ photo.image.url }}" width="500">
+<h3>{{ photo.description|safe }}</h3>
+
+{% endblock %}
