@@ -1,4 +1,5 @@
 from copy import deepcopy
+from random import sample
 
 
 def get_presence(cells):
@@ -226,9 +227,31 @@ class Puzzle:
                         return (i, j)
         return None
 
+    def puzzle_gen(self):
+        base = 3
+        side = base*base
+        # pattern for a baseline valid solution
+        def pattern(r, c): return (base*(r % base)+r//base+c) % side
+        # randomize rows, columns and numbers (of valid base pattern)
+        def shuffle(s): return sample(s, len(s))
+        rBase = range(base)
+        rows = [g*base + r for g in shuffle(rBase) for r in shuffle(rBase)]
+        cols = [g*base + c for g in shuffle(rBase) for c in shuffle(rBase)]
+        nums = shuffle(range(1, base*base+1))
+        # produce board using randomized baseline pattern
+        board = [[nums[pattern(r, c)] for c in cols] for r in rows]
 
-""" board = [
-    [6, 0, 0, 4, 0, 0, 1, 2, 0],
+        squares = side*side
+        empties = squares * 3//4
+        for p in sample(range(squares), empties):
+            board[p // side][p % side] = 0
+        self.cells = board
+        return board
+
+
+'''
+board = [
+    [7, 0, 0, 4, 0, 0, 1, 2, 0],
     [6, 0, 0, 0, 7, 5, 0, 0, 9],
     [0, 0, 0, 6, 0, 1, 0, 7, 8],
     [0, 0, 7, 0, 4, 0, 2, 6, 0],
@@ -239,10 +262,8 @@ class Puzzle:
     [0, 4, 9, 2, 0, 6, 0, 0, 7]
 ]
 
-bo = Puzzle(board)
+bo = Puzzle()
 # bo.print_board()
-
-print(bo.solve())
-print('========================')
+bo.puzzle_gen()
 print(bo.cells)
- """
+'''

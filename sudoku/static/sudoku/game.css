@@ -1,6 +1,10 @@
-   
 
 
+.timer{
+  position: relative;
+  height: 15px;
+  width: 15px;
+}
 
     .card {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -68,7 +72,7 @@
       background-color: transparent;
       color: white;
     }
-                       
+
 @media screen and (max-width: 767px) {
     .sidenav {
     height: auto;

@@ -1,3 +1,4 @@
+from random import sample
 
 
 class Sudoku:
@@ -101,7 +102,29 @@ class Sudoku:
                         return (i, j)
         return None
 
+    def puzzle_gen(self):
+        base = 3
+        side = base*base
+        # pattern for a baseline valid solution
+        def pattern(r, c): return (base*(r % base)+r//base+c) % side
+        # randomize rows, columns and numbers (of valid base pattern)
+        def shuffle(s): return sample(s, len(s))
+        rBase = range(base)
+        rows = [g*base + r for g in shuffle(rBase) for r in shuffle(rBase)]
+        cols = [g*base + c for g in shuffle(rBase) for c in shuffle(rBase)]
+        nums = shuffle(range(1, base*base+1))
+        # produce board using randomized baseline pattern
+        board = [[nums[pattern(r, c)] for c in cols] for r in rows]
 
+        squares = side*side
+        empties = squares * 3//4
+        for p in sample(range(squares), empties):
+            board[p // side][p % side] = 0
+        self.cells = board
+        return board
+
+
+'''
 board = [
     [7, 8, 0, 4, 0, 0, 1, 2, 0],
     [6, 0, 0, 0, 7, 5, 0, 0, 9],
@@ -118,4 +141,8 @@ bo = Sudoku(board)
 bo.print_board()
 bo.solver()
 print('========================')
+bo.print_board()
+'''
+bo = Sudoku()
+bo.puzzle_gen()
 bo.print_board()

@@ -5,7 +5,11 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 import tdameritrade as td
-from stockscreener.config import cliend_id
+#from stockscreener.config import cliend_id
+from stockscreener import config
+#cliend_id = 'QEXW048XXG6CP86J51LNWTM2QSLVZJKZ'
+
+cliend_id = config.get_id()
 
 
 class Stock:
@@ -76,7 +80,7 @@ class Stock:
 
     def get_sp500_comp_last_price(self):
         table = []
-        last = datetime.now() - timedelta(1)
+        last = datetime.now() - timedelta(3)
         epochtime = str(self.unix_time_millis(last))
         print(epochtime)
         payload = {'apikey': cliend_id,
@@ -100,3 +104,7 @@ class Stock:
         # print(table)
         self.sp500_comp_last_price = table
         return table
+
+
+#mystock = Stock()
+# mystock.get_sp500_comp_last_price()

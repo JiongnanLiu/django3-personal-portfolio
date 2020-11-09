@@ -42,7 +42,7 @@
     setInterval(function () {
         $.ajax({
             type: "GET",
-            url: {% url 'stockcreener:stockscreener' %}, // URL to your view that serves new info
+            url: {% url 'stockscreener:stockscreener' %}, // URL to your view that serves new info
             data: { 'append_increment': append_increment },
         })
         .done(function (response) {

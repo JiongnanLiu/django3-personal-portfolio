@@ -21,8 +21,27 @@ class StockScreener(models.Model):
 
 class StockPrice(models.Model):
     ticker = models.CharField(max_length=4)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    volume = models.IntegerField()
+    name = models.CharField(max_length=100)
+    open = models.DecimalField(max_digits=10, decimal_places=2)
+    low = models.DecimalField(max_digits=10, decimal_places=2)
+    high = models.DecimalField(max_digits=10, decimal_places=2)
+    close = models.DecimalField(max_digits=10, decimal_places=2)
+    volume = models.IntegerField(default=0)
 
-    def __init__(self, table):
-        self.stocktable = table
+    class Meta:
+        db_table = 'stock_price_last_day'
+        unique_together = [['ticker', 'name']]
+
+
+class StockPriceHistory(models.Model):
+    ticker = models.CharField(default='None', max_length=4)
+    name = models.CharField(default='None', max_length=100)
+    date = models.DateTimeField(null=True, blank=True)
+    close = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    ma20 = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    ma60 = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    ma120 = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    volume = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = 'stock_price_history'

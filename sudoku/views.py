@@ -1,10 +1,27 @@
 from django.shortcuts import render
-from .models import Sudoku
+from sudoku.models import Sudoku, Ranking
 from .puzzle import Puzzle
 # Create your views here.
 
 
+def ranking(request):
+    users = Ranking.objects.order_by('rank')
+    '''
+    rank_counter = 1
+    print(users)
+    
+    for user in users:
+        if (rank_counter <= 10):
+            user.rank = rank_counter
+            rank_counter += 1
+        else:
+            break
+            '''
+    return render(request, 'sudoku/sudoku.html', {'users': users})
+
+
 def sudoku(request):
+    users = Ranking.objects.order_by('rank')
     res = request.POST
 
     if res:
@@ -15,7 +32,7 @@ def sudoku(request):
 
             for column_num in range(9):
                 current_location = 'cell-%i-%i' % (row_num + 1, column_num + 1)
-
+                print(current_location)
                 try:
                     current_num = int(res[current_location])
                 except ValueError:
@@ -28,12 +45,21 @@ def sudoku(request):
         try:
             valid = my_puzzle.solve()
             if valid:
-                return render(request, 'sudoku/sudoku.html', {'cells': [[0 for i in range(9)] for j in range(9)], 'valid': True})
+                puzzle = Puzzle()
+                cells = puzzle.puzzle_gen()
+                print(cells)
+                return render(request, 'sudoku/sudoku.html', {'cells': cells, 'valid': True, 'users': users})
             else:
-                return render(request, 'sudoku/sudoku.html', {'cells': my_puzzle.cells, 'new': False, 'error': False})
+                puzzle = Puzzle()
+                cells = puzzle.puzzle_gen()
+                print(cells)
+                return render(request, 'sudoku/sudoku.html', {'cells': my_puzzle.cells, 'new': False, 'error': False, 'users': users})
 
         except ValueError:
-            return render(request, 'sudoku/sudoku.html', {'cells': [[0 for i in range(9)] for j in range(9)], 'new': True, 'error': True})
+            puzzle = Puzzle()
+            cells = puzzle.puzzle_gen()
+            print(cells)
+            return render(request, 'sudoku/sudoku.html', {'cells': cells, 'new': True, 'error': True, 'users': users})
         '''
         res = my_puzzle.solve()
         if res:
@@ -42,9 +68,13 @@ def sudoku(request):
             return render(request, 'sudoku/sudoku.html', {'cells': [[0 for i in range(9)] for j in range(9)], 'new': True, 'error': True})
         '''
     else:
-        return render(request, 'sudoku/sudoku.html', {'cells': [[0 for i in range(9)] for j in range(9)], 'new': True, 'error': False})
+        puzzle = Puzzle()
+        cells = puzzle.puzzle_gen()
+        print(cells)
+        return render(request, 'sudoku/sudoku.html', {'cells': cells, 'new': True, 'error': False, 'users': users})
 
 
 """ def all_players(request):
     players = Sudoku.objects.all()
-    return render(request, 'portfolio/sudoku.html', {'players': players}) """
+    return render(request, 'portfolio/sudoku.html', {'players': players})
+ """
